@@ -1,0 +1,8 @@
+name: peeks2creeks
+static_sites:
+  - environment_slug: html
+    github:
+      branch: main
+      deploy_on_push: true
+      repo: foundryserver/peeks2creeks
+    name: peeks2creeks
