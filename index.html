@@ -23,10 +23,10 @@
               <img src="p2c_logo.jpg" alt="Peaks to Creeks Outfitters Logo" />
             </div>
             <div class="hero-text">
-              <h2>Experience the Thrill of Fly Fishing</h2>
+              <h2>Experience the Thrill of Fishing</h2>
               <p>
                 From the peaks to the creeks, we provide everything you need for your perfect fishing adventure. Quality
-                gear, expert guidance, and unforgettable experiences await.
+                gear, expert guidance, and unforgettable experiences await. The Columbia Valley's premier fishing shop.
               </p>
             </div>
           </div>
@@ -41,21 +41,21 @@
               <div class="info-item">
                 <h4>Address</h4>
                 <p>
-                  123 Burns Ave<br />
+                  4957 Burns Ave<br />
                   Canal Flats, BC V0B 1B0<br />
                   Canada
                 </p>
               </div>
               <div class="info-item">
                 <h4>Phone</h4>
-                <p><a href="tel:+12501234567">(250) 123-4567</a></p>
+                <p><a href="tel:+12501234567">(250) 341 2204</a></p>
               </div>
               <div class="info-item">
                 <h4>Email</h4>
                 <p><a href="mailto:info@peaks2creeks.com">info@peaks2creeks.ca</a></p>
               </div>
               <div class="info-item">
-                <h4>Hours</h4>
+                <h4>Winter Hours (Sept 1 - May 31)</h4>
                 <p>Friday - Sunday : 9:00 AM - 5:00 PM</p>
               </div>
             </div>
@@ -64,7 +64,7 @@
               <h3>Find Us</h3>
               <div class="map-wrapper">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3048.4151738999896!2d-105.3200241!3d40.2676842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876946e38b3f4e6b%3A0x4e0c0f2a8b8d8e8f!2sRocky%20Mountain%20National%20Park!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2556.2213322376347!2d-115.809812!3d50.1569971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537aead920f5fd23%3A0x1634b947d714a7af!2s4957%20Burns%20Ave%2C%20Canal%20Flats%2C%20BC%20V0B%201B0!5e0!3m2!1sen!2sca!4v1757700800411!5m2!1sen!2sca"
                   width="100%"
                   height="300"
                   style="border: 0"
@@ -80,10 +80,151 @@
       </section>
     </main>
 
+    <section class="gallery">
+      <div class="container">
+        <h2>Fishing Gallery</h2>
+        <div class="carousel">
+          <div class="carousel-container">
+            <div class="carousel-slide" id="carousel-slide">
+              <!-- Images will be loaded here by JavaScript -->
+            </div>
+          </div>
+          <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
+          <button class="carousel-btn next" id="nextBtn">&#10095;</button>
+        </div>
+        <div class="carousel-indicators" id="carousel-indicators">
+          <!-- Dots will be added here by JavaScript -->
+        </div>
+      </div>
+    </section>
+
     <footer>
       <div class="container">
         <p>&copy; 2025 Peaks to Creeks Outfitters. All rights reserved.</p>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Array of image paths in the gallery directory
+        // Add your image filenames here when you add pictures to the gallery folder
+        const images = [
+          "gallery/picture1.jpg",
+          "gallery/picture2.jpg",
+          "gallery/picture3.jpg",
+          "gallery/picture4.jpg",
+          "gallery/picture5.jpg",
+          "gallery/picture6.jpg",
+        ];
+
+        const carouselSlide = document.getElementById("carousel-slide");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const indicatorsContainer = document.getElementById("carousel-indicators");
+
+        let currentIndex = 0;
+
+        // Function to create carousel slides
+        function createSlides() {
+          carouselSlide.innerHTML = "";
+          indicatorsContainer.innerHTML = "";
+
+          if (images.length === 0) {
+            // Show placeholder when no images are available
+            carouselSlide.innerHTML = `
+              <div class="no-images">
+                <p>Add fishing pictures to the gallery directory to see them here!</p>
+              </div>
+            `;
+            return;
+          }
+
+          images.forEach((image, index) => {
+            // Create slide
+            const slide = document.createElement("img");
+            slide.src = image;
+            slide.alt = `Fishing picture ${index + 1}`;
+            slide.style.width = "100%";
+            slide.style.height = "100%";
+            slide.style.objectFit = "cover";
+            carouselSlide.appendChild(slide);
+
+            // Create indicator
+            const indicator = document.createElement("div");
+            indicator.classList.add("carousel-indicator");
+            if (index === 0) indicator.classList.add("active");
+            indicator.addEventListener("click", () => goToSlide(index));
+            indicatorsContainer.appendChild(indicator);
+          });
+
+          updateCarousel();
+        }
+
+        // Function to update carousel position
+        function updateCarousel() {
+          if (images.length === 0) return;
+
+          const slideWidth = carouselSlide.clientWidth;
+          carouselSlide.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+          // Update indicators
+          const indicators = document.querySelectorAll(".carousel-indicator");
+          indicators.forEach((indicator, index) => {
+            indicator.classList.toggle("active", index === currentIndex);
+          });
+        }
+
+        // Function to go to specific slide
+        function goToSlide(index) {
+          currentIndex = index;
+          updateCarousel();
+        }
+
+        // Function to go to next slide
+        function nextSlide() {
+          if (images.length === 0) return;
+          currentIndex = (currentIndex + 1) % images.length;
+          updateCarousel();
+        }
+
+        // Function to go to previous slide
+        function prevSlide() {
+          if (images.length === 0) return;
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          updateCarousel();
+        }
+
+        // Event listeners
+        nextBtn.addEventListener("click", nextSlide);
+        prevBtn.addEventListener("click", prevSlide);
+
+        // Auto-play functionality (optional)
+        let autoPlayInterval;
+
+        function startAutoPlay() {
+          if (images.length > 1) {
+            autoPlayInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+          }
+        }
+
+        function stopAutoPlay() {
+          clearInterval(autoPlayInterval);
+        }
+
+        // Pause auto-play on hover
+        const carousel = document.querySelector(".carousel");
+        carousel.addEventListener("mouseenter", stopAutoPlay);
+        carousel.addEventListener("mouseleave", startAutoPlay);
+
+        // Initialize carousel
+        createSlides();
+        if (images.length > 0) {
+          startAutoPlay();
+        }
+
+        // Handle window resize
+        window.addEventListener("resize", updateCarousel);
+      });
+    </script>
   </body>
 </html>
