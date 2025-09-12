@@ -1,8 +1,8 @@
 spec:
-  name: peeks2creeks
+  name: peaks2creeks
   static_sites:
     - environment_slug: html
       git:
         branch: main
-        repo_clone_url: https://github.com/foundryserver/peeks2creeks.git
-      name: peeks2creeks
+        repo_clone_url: https://github.com/foundryserver/peaks2creeks.git
+      name: peaks2creeks
