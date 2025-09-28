@@ -3,15 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Peaks to Creeks Outfitters - Premier Fly Fishing Shop</title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Peaks to Creeks Outfitters - Premier fishing shop serving Golden, Radium, Invermere, Fairmont, Windermere, Canal Flats, Wasa, Fort Steel, Kimberley and Cranbrook BC. Quality fishing gear, expert guidance, and unforgettable Columbia Valley fishing experiences."
+    />
+    <meta
+      name="keywords"
+      content="fishing shop, Columbia Valley, Golden BC, Radium BC, Invermere BC, Fairmont BC, Windermere BC, Canal Flats BC, Wasa BC, Fort Steel BC, Kimberley BC, Cranbrook BC, fishing gear, fishing guides, outfitters, fly fishing, lake fishing, river fishing, British Columbia fishing"
+    />
+    <meta name="author" content="Peaks to Creeks Outfitters" />
+    <meta name="robots" content="index, follow" />
+    <meta name="geo.region" content="CA-BC" />
+    <meta name="geo.placename" content="Columbia Valley, British Columbia" />
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Peaks to Creeks Outfitters - Premier Fishing Shop in Columbia Valley BC" />
+    <meta
+      property="og:description"
+      content="Your premier fishing destination serving Golden, Radium, Invermere, Fairmont, Windermere, Canal Flats, Wasa, Fort Steel, Kimberley and Cranbrook BC. Quality gear, expert guidance, unforgettable experiences."
+    />
+    <meta property="og:type" content="business.business" />
+    <meta property="og:site_name" content="Peaks to Creeks Outfitters" />
+    <meta property="og:locale" content="en_CA" />
+
+    <!-- Local Business Schema -->
+    <meta name="business:contact_data:locality" content="Columbia Valley" />
+    <meta name="business:contact_data:region" content="British Columbia" />
+    <meta name="business:contact_data:country_name" content="Canada" />
+
+    <title>Peaks to Creeks Outfitters - Premier Fishing Shop</title>
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header>
       <div class="container">
-        <h1>Peaks to Creeks Outfitters</h1>
-        <p class="tagline">Your Premier Fishing Destination</p>
+        <div class="header-content">
+          <div class="logo">
+            <img src="p2c_logo_trans.jpg" alt="Peaks to Creeks Outfitters Logo" />
+          </div>
+          <div class="header-text">
+            <h1>Peaks to Creeks Outfitters</h1>
+            <p class="tagline">Your Premier Fishing Destination in the Columbia Valley!</p>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -19,11 +56,16 @@
       <section class="hero">
         <div class="container">
           <div class="hero-content">
-            <div class="trout-image">
-              <img src="p2c_logo.jpg" alt="Peaks to Creeks Outfitters Logo" />
+            <div class="hero-image">
+              <img src="shop.jpg" alt="Peaks to Creeks Outfitters Shop" />
             </div>
             <div class="hero-text">
-              <h2>Experience the Thrill of Fishing</h2>
+              <h2>Turning Anglers’ Dreams Into Unforgettable Adventures</h2>
+              <p class="mission-statement">
+                At Peaks to Creeks Outfitters, our passion and expertise deliver more than just gear—we provide
+                outstanding service and local knowledge that help every fisherman realize their ultimate adventure on
+                the water.
+              </p>
               <p>
                 From the peaks to the creeks, we provide everything you need for your perfect fishing adventure. Quality
                 gear, expert guidance, and unforgettable experiences await. The Columbia Valley's premier fishing shop.
@@ -66,15 +108,16 @@
               </div>
               <div class="info-item">
                 <h4>Phone</h4>
-                <p><a href="tel:+12501234567">(250) 341 2204</a></p>
+                <p><a href="tel:+12504095970">(250) 409-5970</a></p>
               </div>
               <div class="info-item">
                 <h4>Email</h4>
                 <p><a href="mailto:info@peaks2creeks.com">info@peaks2creeks.ca</a></p>
               </div>
               <div class="info-item">
-                <h4>Winter Hours (Sept 1 - May 31)</h4>
-                <p>Friday - Sunday : 9:00 AM - 5:00 PM</p>
+                <h4>Winter Hours (Oct 1 - April 1)</h4>
+                <p>Friday: 3:00 PM - 6:00 PM</p>
+                <p>Saturday - Sunday : 9:00 AM - 5:00 PM</p>
               </div>
             </div>
 
@@ -109,12 +152,23 @@
         // Array of image paths in the gallery directory
         // Add your image filenames here when you add pictures to the gallery folder
         const images = [
+          "gallery/1000002514.jpg",
+          "gallery/1000002672.png",
+          "gallery/1000002674.png",
+          "gallery/1000002676.png",
+          "gallery/1000003746.jpg",
+          "gallery/1000004021.jpg",
+          "gallery/1000006060.jpg",
+          "gallery/1000006529.jpg",
+          "gallery/1000006872.jpg",
+          "gallery/1000006916.jpg",
           "gallery/picture1.jpg",
           "gallery/picture2.jpg",
           "gallery/picture3.jpg",
           "gallery/picture4.jpg",
           "gallery/picture5.jpg",
           "gallery/picture6.jpg",
+          "gallery/shadow.jpg",
         ];
 
         const carouselSlide = document.getElementById("carousel-slide");
@@ -144,9 +198,6 @@
             const slide = document.createElement("img");
             slide.src = image;
             slide.alt = `Fishing picture ${index + 1}`;
-            slide.style.width = "100%";
-            slide.style.height = "100%";
-            slide.style.objectFit = "cover";
             carouselSlide.appendChild(slide);
 
             // Create indicator
